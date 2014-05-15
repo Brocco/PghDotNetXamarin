@@ -1,0 +1,49 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Pgh Xamarin ToDo</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <style>
+        ul, li {
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body ng-app="pghX" ng-controller="ToDoCtrl">
+    <div class="jumbotron">
+        <h1>Pgh Xamarin ToDo</h1>
+    </div>
+    <ul>
+        <li ng-repeat="todo in todos track by todo.id">
+            <input type="checkbox" ng-model="todo.isComplete" ng-change="saveTodo(todo)" />
+            <span ng-bind="todo.text"></span>
+            <i class="fa fa-trash-o" style="cursor: pointer;" ng-click="deleteTodo(todo)"></i>
+        </li>
+    </ul>
+    <div>
+        <form ng-submit="addTodo()">
+            <div class="form-group">
+                <input type="text" ng-model="newTodo" required />
+                <button type="submit">
+                    <i class="fa fa-plus"></i>
+                    Add
+                </button>
+            </div>
+        </form>
+    </div>
+    <script src="~/scripts/jquery-2.1.0.min.js"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
+    <script src="~/scripts/angular.min.js"></script>
+    <script src="~/scripts/angular-resource.min.js"></script>
+    <script src="~/scripts/app/app.js"></script>
+</body>
+</html>
